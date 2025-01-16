@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Gestión de Clientes</h1>
+</header>
+
+<main>
+    <section id="form-section">
+        <h2>Añadir Cliente</h2>
+        <form id="client-form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <button type="submit">Añadir</button>
+        </form>
+    </section>
+
+    <section id="clients-section">
+        <h2>Lista de Clientes</h2>
+        <table id="clients-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Clientes serán listados aquí -->
+            </tbody>
+        </table>
+    </section>
+
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Editar Cliente</h2>
+            <form id="edit-form">
+                <input type="hidden" id="edit-id">
+
+                <label for="edit-name">Nombre:</label>
+                <input type="text" id="edit-name" name="name" required>
+
+                <label for="edit-email">Email:</label>
+                <input type="email" id="edit-email" name="email" required>
+
+                <label for="edit-phone">Teléfono:</label>
+                <input type="text" id="edit-phone" name="phone" required>
+
+                <button type="submit">Guardar</button>
+                <button type="button" id="cancel-edit">Cancelar</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
