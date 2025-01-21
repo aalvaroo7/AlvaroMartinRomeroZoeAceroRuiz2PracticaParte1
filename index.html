@@ -15,16 +15,10 @@
     <section id="form-section">
         <h2>Añadir Cliente</h2>
         <form id="client-form">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="phone">Teléfono:</label>
-            <input type="text" id="phone" name="phone" required>
-
-            <button type="submit">Añadir</button>
+            <input type="text" id="name" name="name" placeholder="Nombre" required>
+            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+            <input type="text" id="phone" name="phone" placeholder="Teléfono" required>
+            <button type="submit" class="primary-button">Añadir Cliente</button>
         </form>
     </section>
 
@@ -33,38 +27,26 @@
         <table id="clients-table">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre</th>
-                <th>Email</th>
+                <th>Correo</th>
                 <th>Teléfono</th>
                 <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
-            <!-- Clientes serán listados aquí -->
             </tbody>
         </table>
     </section>
 
-    <div id="edit-modal" class="modal hidden">
-        <div class="modal-content">
-            <h2>Editar Cliente</h2>
-            <form id="edit-form">
-                <input type="hidden" id="edit-id">
-
-                <label for="edit-name">Nombre:</label>
-                <input type="text" id="edit-name" name="name" required>
-
-                <label for="edit-email">Email:</label>
-                <input type="email" id="edit-email" name="email" required>
-
-                <label for="edit-phone">Teléfono:</label>
-                <input type="text" id="edit-phone" name="phone" required>
-
-                <button type="submit">Guardar</button>
-                <button type="button" id="cancel-edit">Cancelar</button>
-            </form>
-        </div>
+    <div id="edit-modal" class="hidden">
+        <form id="edit-form">
+            <input type="hidden" id="edit-id" name="edit-id">
+            <input type="text" id="edit-name" name="edit-name" placeholder="Nombre" required>
+            <input type="email" id="edit-email" name="edit-email" placeholder="Correo electrónico" required>
+            <input type="text" id="edit-phone" name="edit-phone" placeholder="Teléfono" required>
+            <button type="submit" class="primary-button">Guardar Cambios</button>
+            <button type="button" id="cancel-edit" class="primary-button">Cancelar</button>
+        </form>
     </div>
 </main>
 

@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (validateClient(name, email, phone)) {
             const client = {
-                id: Date.now(),
                 name,
                 email,
                 phone
@@ -28,28 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clientsTableBody.addEventListener('click', (event) => {
         if (event.target.classList.contains('edit-button')) {
-            const clientId = event.target.dataset.id;
-            const client = clients.find(c => c.id == clientId);
+            const clientIndex = event.target.dataset.index;
+            const client = clients[clientIndex];
             if (client) {
-                openEditModal(client);
+                openEditModal(client, clientIndex);
             }
         } else if (event.target.classList.contains('delete-button')) {
-            const clientId = event.target.dataset.id;
-            clients = clients.filter(c => c.id != clientId);
+            const clientIndex = event.target.dataset.index;
+            clients.splice(clientIndex, 1);
             renderClients();
         }
     });
 
     editForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        const id = editForm['edit-id'].value;
+        const index = editForm['edit-index'].value;
         const name = editForm['edit-name'].value.trim();
         const email = editForm['edit-email'].value.trim();
         const phone = editForm['edit-phone'].value.trim();
 
-        if (validateClient(name, email, phone, id)) {
-            const clientIndex = clients.findIndex(c => c.id == id);
-            clients[clientIndex] = { id: Number(id), name, email, phone };
+        if (validateClient(name, email, phone)) {
+            clients[index] = { name, email, phone };
             renderClients();
             closeEditModal();
         }
@@ -59,18 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
         closeEditModal();
     });
 
-    function validateClient(name, email, phone, id = null) {
+    function validateClient(name, email, phone) {
         if (!name || !email || !phone) {
             alert('Todos los campos son obligatorios.');
             return false;
         }
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+        const validDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com'];
+        const emailDomain = email.split('@')[1];
+        if (!emailPattern.test(email) || !validDomains.includes(emailDomain)) {
             alert('Email no válido.');
             return false;
         }
-        if (clients.some(c => c.email === email && c.id != id)) {
+        if (clients.some(c => c.email === email)) {
             alert('El email ya está registrado.');
+            return false;
+        }
+        const phonePattern = /^[+\d\s]+$/;
+        if (!phonePattern.test(phone)) {
+            alert('Teléfono no válido. Solo se permiten caracteres numéricos, espacios y prefijos de país.');
             return false;
         }
         return true;
@@ -78,24 +83,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderClients() {
         clientsTableBody.innerHTML = '';
-        clients.forEach(client => {
+        clients.forEach((client, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${client.id}</td>
                 <td>${client.name}</td>
                 <td>${client.email}</td>
                 <td>${client.phone}</td>
                 <td>
-                    <button class="action-button edit-button" data-id="${client.id}">Editar</button>
-                    <button class="action-button delete-button" data-id="${client.id}">Eliminar</button>
+                    <button class="action-button edit-button" data-index="${index}">Editar</button>
+                    <button class="action-button delete-button" data-index="${index}">Eliminar</button>
                 </td>
             `;
             clientsTableBody.appendChild(row);
         });
     }
 
-    function openEditModal(client) {
-        editForm['edit-id'].value = client.id;
+    function openEditModal(client, index) {
+        editForm['edit-index'].value = index;
         editForm['edit-name'].value = client.name;
         editForm['edit-email'].value = client.email;
         editForm['edit-phone'].value = client.phone;
