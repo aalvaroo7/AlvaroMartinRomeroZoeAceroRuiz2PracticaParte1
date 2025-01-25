@@ -22,6 +22,17 @@
         </form>
     </section>
 
+    <div id="edit-modal" class="hidden">
+        <form id="edit-form">
+            <input type="hidden" id="edit-index" name="edit-index">
+            <input type="text" id="edit-name" name="edit-name" placeholder="Nombre" required>
+            <input type="email" id="edit-email" name="edit-email" placeholder="Correo electrónico" required>
+            <input type="text" id="edit-phone" name="edit-phone" placeholder="Teléfono" required>
+            <button type="submit" class="primary-button">Guardar Cambios</button>
+            <button type="button" id="cancel-edit" class="primary-button">Cancelar</button>
+        </form>
+    </div>
+
     <section id="clients-section">
         <h2>Lista de Clientes</h2>
         <table id="clients-table">
@@ -37,17 +48,6 @@
             </tbody>
         </table>
     </section>
-
-    <div id="edit-modal" class="hidden">
-        <form id="edit-form">
-            <input type="hidden" id="edit-id" name="edit-id">
-            <input type="text" id="edit-name" name="edit-name" placeholder="Nombre" required>
-            <input type="email" id="edit-email" name="edit-email" placeholder="Correo electrónico" required>
-            <input type="text" id="edit-phone" name="edit-phone" placeholder="Teléfono" required>
-            <button type="submit" class="primary-button">Guardar Cambios</button>
-            <button type="button" id="cancel-edit" class="primary-button">Cancelar</button>
-        </form>
-    </div>
 </main>
 
 <script src="app.js"></script>

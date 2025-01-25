@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = editForm['edit-email'].value.trim();
         const phone = editForm['edit-phone'].value.trim();
 
-        if (validateClient(name, email, phone)) {
+        if (validateClient(name, email, phone, index)) {
             clients[index] = { name, email, phone };
             renderClients();
             closeEditModal();
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeEditModal();
     });
 
-    function validateClient(name, email, phone) {
+    function validateClient(name, email, phone, currentIndex = -1) {
         if (!name || !email || !phone) {
             alert('Todos los campos son obligatorios.');
             return false;
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Email no válido.');
             return false;
         }
-        if (clients.some(c => c.email === email)) {
+        if (clients.some((c, index) => c.email === email && index !== currentIndex && c.email !== clients[currentIndex].email)) {
             alert('El email ya está registrado.');
             return false;
         }

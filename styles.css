@@ -19,60 +19,70 @@ main {
 }
 
 #form-section {
-    background-color: #f9f9f9;
-    padding: 15px;
+    background-color: #fff;
+    padding: 20px;
     border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
 form {
     display: flex;
+    flex-direction: row;
     gap: 10px;
-    flex-wrap: wrap;
-    font-weight: bold;
 }
 
 form input {
-    padding: 4px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%;
-    max-width: 200px;
-    flex: 1;
+    font-size: 0.9rem;
+    width: 200px;
 }
 
-form button {
-    padding: 5px 10px;
-    background-color: #EFEFEF;
-    color: #3E3C3C;
-    border: 1px solid #C2C2C2;
+form button { /*hay que cambiar el boton de añadir cliente que no tiene el color que tendria que tener :( */
+    padding: 10px 15px;
+    background-color: #ddd;
+    color: white;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 form button:hover {
-    background-color: #EFEFEF;
+    background-color: #0056b3;
 }
 
 #clients-section {
-    background-color: #f9f9f9;
+    background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#clients-table {
+#clients-table { /*no se si lo de que parezca que esta "levantado" es necesario */
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
     background-color: #fff;
 }
 
-#clients-table th {
+#clients-table th, #clients-table td {
     padding: 10px;
     text-align: left;
+    border: 1px solid #ddd;
+}
+
+#clients-table th {
     background-color: #f2f2f2;
-    border-bottom: 1px solid #ddd;
+}
+
+#clients-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#clients-table tr:hover {
+    background-color: #f1f1f1;
 }
 
 #clients-table td {
@@ -87,30 +97,15 @@ form button:hover {
 
 button.primary-button {
     padding: 5px 10px;
-    background-color: #EFEFEF;
-    color: #3E3C3C;
-    border: 1px solid #C2C2C2;
+    background-color: #ddd;
+    color: white;
+    border: none;
     border-radius: 3px;
     cursor: pointer;
 }
 
 button.primary-button:hover {
-    background-color: #EFEFEF;
-}
-
-
-button.action-button {
-    padding: 5px 10px;
-    background-color: #EFEFEF;
-    color: #3E3C3C;
-    border: 1px solid #C2C2C2;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-
-button.action-button:hover {
-    background-color: #EFEFEF;
+    background-color: #0056b3;
 }
 
 #edit-modal {
