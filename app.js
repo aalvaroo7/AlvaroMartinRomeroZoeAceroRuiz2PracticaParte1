@@ -6,15 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelEditButton = document.getElementById('cancel-edit');
 
     let clients = [];
+    let nextId = 1;
 
     clientForm.addEventListener('submit', (event) => {
         event.preventDefault();
+        const id = generateUniqueId();
         const name = clientForm.name.value.trim();
         const email = clientForm.email.value.trim();
         const phone = clientForm.phone.value.trim();
 
         if (validateClient(name, email, phone)) {
             const client = {
+                id,
                 name,
                 email,
                 phone
@@ -34,8 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else if (event.target.classList.contains('delete-button')) {
             const clientIndex = event.target.dataset.index;
-            clients.splice(clientIndex, 1);
-            renderClients();
+            const client = clients[clientIndex];
+            const enteredId = prompt('Introduce el ID del cliente para confirmar la eliminación:');
+            if (enteredId == client.id) {
+                if (confirm('¿Está seguro de que desea eliminar este contacto?')) {
+                    clients.splice(clientIndex, 1);
+                    renderClients();
+                }
+            } else {
+                alert('ID incorrecto. No se ha eliminado el cliente.');
+            }
         }
     });
 
@@ -47,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const phone = editForm['edit-phone'].value.trim();
 
         if (validateClient(name, email, phone, index)) {
-            clients[index] = { name, email, phone };
+            clients[index] = { ...clients[index], name, email, phone };
             renderClients();
             closeEditModal();
         }
@@ -56,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     cancelEditButton.addEventListener('click', () => {
         closeEditModal();
     });
+
+    function generateUniqueId() {
+        return Math.floor(10000 + Math.random() * 90000).toString();
+    }
 
     function validateClient(name, email, phone, currentIndex = -1) {
         if (!name || !email || !phone) {
@@ -86,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clients.forEach((client, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
+                <td>${client.id}</td>
                 <td>${client.name}</td>
                 <td>${client.email}</td>
                 <td>${client.phone}</td>
