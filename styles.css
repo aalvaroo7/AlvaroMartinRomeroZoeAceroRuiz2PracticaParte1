@@ -45,17 +45,21 @@ form input {
     width: 200px;
 }
 
-form button { /*hay que cambiar el boton de añadir cliente que no tiene el color que tendria que tener :( */
+form button {
     padding: 10px 15px;
-    background-color: #ddd;
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 form button:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
+    transform: scale(1.05);
 }
 
 #clients-section {
@@ -65,7 +69,7 @@ form button:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#clients-table { /*no se si lo de que parezca que esta "levantado" es necesario */
+#clients-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
@@ -84,16 +88,6 @@ form button:hover {
 
 #clients-table tr:nth-child(even) {
     background-color: #f9f9f9;
-}
-
-#clients-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-#clients-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
 #clients-table tr:hover {
@@ -130,5 +124,5 @@ button.primary-button:hover {
 }
 
 #edit-modal.hidden {
-    display: none;
+    display: none;
 }
