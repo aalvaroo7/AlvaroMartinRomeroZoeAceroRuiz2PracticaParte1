@@ -78,10 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
         const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
-        const validDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com'];
-        const emailDomain = email.split('@')[1];
-        if (!emailPattern.test(email) || !validDomains.includes(emailDomain)) {
-            alert('Email no válido.');
+        if (!email.includes('@') || !email.endsWith('.com')) {
+            alert('Email no válido. Debe contener "@" y terminar con ".com".');
             return false;
         }
         if (clients.some((c, index) => c.email === email && index !== currentIndex && c.email !== clients[currentIndex].email)) {
