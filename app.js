@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return false;
             }
         }
-        const phonePattern = /^\+?\d{0,3}?\s?\d{1,3}?\s?\d{1,3}?\s?\d{1,3}$/;
+        const phonePattern = /^\+?\d{1,3}?\s?\d{1,3}?\s?\d{1,3}?\s?\d{1,3}?\s?\d{1,3}$/;
         if (!phonePattern.test(phone)) {
             alert('Teléfono no válido. Solo se permiten caracteres numéricos, espacios y prefijos de país.');
             return false;
