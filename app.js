@@ -78,11 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
         const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
-        if (!email.includes('@') || !email.endsWith('.com')) {
-            alert('Email no válido. Debe contener "@" y terminar con ".com".');
+        if (!emailPattern.test(email)) {
+            alert('Email no válido.');
             return false;
         }
-        if (clients.some((c, index) => c.email === email && index !== currentIndex && c.email !== clients[currentIndex].email)) {
+        if (clients.some((c, index) => c.email === email && index !== currentIndex)) {
             alert('El email ya está registrado.');
             return false;
         }

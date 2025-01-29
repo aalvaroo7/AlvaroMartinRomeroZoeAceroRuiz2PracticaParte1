@@ -94,7 +94,7 @@ form button:hover {
     background-color: #f1f1f1;
 }
 
-button.primary-button {
+button.action-button {
     padding: 5px 10px;
     background-color: #ddd;
     color: white;
@@ -103,7 +103,7 @@ button.primary-button {
     cursor: pointer;
 }
 
-button.primary-button:hover {
+button.action-button:hover {
     background-color: #0056b3;
 }
 
@@ -124,22 +124,5 @@ button.primary-button:hover {
 }
 
 #edit-modal.hidden {
-    display:none;
-}
-
-button.add-client-button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button.add-client-button:hover {
-    background-color: #45a049;
-    transform:scale(1.05);
+     display:none;
 }
