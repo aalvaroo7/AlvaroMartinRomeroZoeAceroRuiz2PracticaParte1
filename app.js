@@ -83,8 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
         if (clients.some((c, index) => c.email === email && index !== currentIndex)) {
-            alert('El email ya está registrado.');
-            return false;
+            if (currentIndex === -1 || clients[currentIndex].email !== email) {
+                alert('El email ya está registrado.');
+                return false;
+            }
         }
         const phonePattern = /^[+\d\s]+$/;
         if (!phonePattern.test(phone)) {
