@@ -77,6 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Todos los campos son obligatorios.');
             return false;
         }
+        const namePattern = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+        if (!namePattern.test(name)) {
+            alert('Nombre no válido. Solo se permiten letras y espacios.');
+            return false;
+        }
         const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
         if (!emailPattern.test(email)) {
             alert('Email no válido.');
@@ -88,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return false;
             }
         }
-        const phonePattern = /^[+\d\s]+$/;
+        const phonePattern = /^\+?\d{0,3}?\s?\d{9}$/;
         if (!phonePattern.test(phone)) {
             alert('Teléfono no válido. Solo se permiten caracteres numéricos, espacios y prefijos de país.');
             return false;

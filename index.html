@@ -15,9 +15,9 @@
     <section id="form-section">
         <h2>Añadir Cliente</h2>
         <form id="client-form">
-            <input type="text" id="name" name="name" placeholder="Nombre" required>
+            <input type="text" id="name" name="name" placeholder="Nombre" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" required>
             <input type="text" id="email" name="email" placeholder="Correo electrónico" required>
-            <input type="text" id="phone" name="phone" placeholder="Teléfono" required>
+            <input type="text" id="phone" name="phone" placeholder="Teléfono" pattern="^\+?\d{0,3}?\s?\d{9}$" required>
             <button type="submit" class="action-button">Añadir Cliente</button>
         </form>
     </section>
